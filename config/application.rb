@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+config.assets.initialize_on_precompile = true
+
 module Trickle
   class Application < Rails::Application
 
