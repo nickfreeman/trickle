@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209003303) do
+ActiveRecord::Schema.define(version: 20140209010111) do
+
+  create_table "meters", force: true do |t|
+    t.string   "name"
+    t.string   "serial"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -23,6 +30,22 @@ ActiveRecord::Schema.define(version: 20140209003303) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "running_usages", force: true do |t|
+    t.string   "serial"
+    t.integer  "flow_rate"
+    t.datetime "timestamp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "usage_over_times", force: true do |t|
+    t.string   "serial"
+    t.integer  "amount"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140209003303) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "zip_code"
